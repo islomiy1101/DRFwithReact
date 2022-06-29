@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "drf"
+		},
+		{
+			"path": "D:\\lessons\\jsAprel"
+		},
+		{
+			"path": "simpleblog"
+		},
+		{
+			"path": "D:\\makhamadjanov\\web_dev\\justDjango\\justRestFramework"
+		},
+		{
+			"path": "D:\\lessons\\BackendOctober\\DrfReact\\frontend"
+		},
+		{
+			"path": "D:\\lessons\\BackendOctober\\DrfReact\\backend\\APIProject"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "jsAprel"
+	}
+}
