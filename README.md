@@ -304,3 +304,57 @@ Agar App.js faylidan articles ni props orqali uzatmaydigan bo'lsak yuqoridagi ka
         </div>
         )
     })}
+
+Endigi navbat Postlarni __Update__ va __Delete__ qilishga keldi
+ArticleList.js fayliga __Update__ va __Delete__ tugmalarini qo'shamiz
+
+    return (
+            <div key={article.id}>
+              <h5 className="text-success">{article.title}</h5>
+              <h3>{article.description}</h3>
+
+              <div className="row mt-3">
+                <div className="col-md-1">
+                  <button className="btn btn-primary">Update</button>
+                </div>
+                
+                <div className="col-md-1">
+                <button className="btn btn-danger">Delete</button>
+                </div>
+              </div>
+              <hr className="bg-warning" />
+            </div>
+          );
+Dastlab __Update__ qilishni ko'rib o'tamiz:
+
+     <button className="btn btn-primary" onClick={()=>editBtn(article)}>Update</button>
+     
+     const ArticleList = (props) => {
+
+        const editBtn=(article)=>{
+            props.editBtn(article);
+        }
+     }
+components papkasida yangi Form.js faylini yaratamiz
+
+App.js faylida 
+    
+    import Form from './components/Form';
+    
+    const [editArticle, setEditArticle] = useState(null)
+    
+    const editBtn=(article)=>{
+        setEditArticle(article)
+    }
+    
+    <ArticleList articles={articles} editBtn={editBtn}/>
+    <Form article={editArticle}/>
+Form.js
+    
+     return (
+        <div>
+            {
+                props.article && props.article.title
+            }
+        </div>
+      )
