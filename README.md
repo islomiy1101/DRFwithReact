@@ -358,3 +358,48 @@ Form.js
             }
         </div>
       )
+============================================================
+        import React,{useState} from "react";
+
+        const Form = (props) => {
+            const [title, setTitle] = useState(props.article.title)
+            const [description, setDescription] = useState(props.article.description)
+          return (
+            <div>
+              {props.article ? (
+                <div className="mb-3">
+                  <label htmlFor="title"
+                  className="form-label">Title</label>
+                  <input type="text" id="title" 
+                  className="form-control" value={title}
+                  placeholder="Enter a title..."/>
+                  <label htmlFor="description"
+                  className="form-label">Description</label>
+                  <textarea id="description" value={description} 
+                  className="form-control" rows="5"
+                  placeholder="Enter a Description"></textarea>
+                  <button className="btn btn-success mt-2">Update Article</button>
+                </div>
+              ) : null}
+            </div>
+          );
+        };
+
+        export default Form;
+
+App.js faylida errorni bartaraf etish uchun o'zgarish qilamiz
+
+    <div className="App">
+            <h3>Django Blog</h3>
+            <ArticleList articles={articles} editBtn={editBtn}/>
+            {editArticle? <Form article={editArticle}/> : null}
+    </div>
+
+Input va Textareaga o'zgarish kiritish uchun quyidagicha o'zgarish qilamiz
+
+     <input type="text" id="title" className="form-control" value={title}
+          placeholder="Enter a title..." onChange={(e)=>setTitle(e.target.value)}/>
+          
+      <textarea id="description" value={description} 
+          className="form-control" rows="5" onChange={(e)=>setDescription(e.target.value)}
+          placeholder="Enter a Description"></textarea>
