@@ -214,7 +214,7 @@ Yuqorida static holatda ma'lumotlarni chiqarib ko'rdik endi esa navbat api orqal
             'method':'GET',
             headers:{
                 'Content-Type':'application/json',
-                'Authorization':'Token 63bd401b7b223647a4728d77282d8044ab38cb6b'
+                'Authorization':'Token 63804db156c23f67a42c62e8a74ba204cf624239'
             }
             })
             .then(resp=>resp.json())
@@ -259,3 +259,48 @@ settings.py fayliga
         "http://localhost:3000",
     ]
     
+src papkasi ichida components nomli papka yaratamiz va uning ichida ArticleList.js nomli fayl yaratamiz.
+
+     import React from 'react'
+
+    const ArticleList = (props) => {
+      return (
+        <div>
+            {props.articles.map(article=>{
+                    return(
+                    <div key={article.id}>
+                        <h5 className='text-success'>{article.title}</h5>
+                        <h3>{article.description}</h3>
+                    </div>
+                    )
+                })}
+        </div>
+      )
+    }
+    export default ArticleList
+
+App.js fayli
+
+    import ArticleList from './components/ArticleList';
+
+    function App() {
+        const [articles, setArticles] = useState([]);
+        return (
+            <div className="App">
+                <h3>Django Blog</h3>
+                <ArticleList articles={articles}/> //ArticleList Componentni chaqirib olamiz
+            </div>
+        );
+    }
+    export default App;
+Agar App.js faylidan articles ni props orqali uzatmaydigan bo'lsak yuqoridagi kabi xatolik chiqadi shuni oldini olish uchun ArticleList.js faylida quyidagicha o'zgarish qilamiz
+
+    {
+        props.articles && props.articles.map(article=>{
+        return(
+        <div key={article.id}>
+            <h5 className='text-success'>{article.title}</h5>
+            <h3>{article.description}</h3>
+        </div>
+        )
+    })}
