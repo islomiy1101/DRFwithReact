@@ -198,7 +198,6 @@ App.js faylida
             {articles.map(article=>{
                 return(
                     <h2>{article}</h2>
-                </div>
                 )
             })}
             </div>
@@ -236,3 +235,27 @@ Yuqorida static holatda ma'lumotlarni chiqarib ko'rdik endi esa navbat api orqal
             </div>
         );
     }
+
+Ko'rib turganimizdek bizga apidan foydalanish uchun ruxsat bo'lmadi.Shuning uchun django-cors-headers packagini o'rantib olamiz.Buning uchun esa terminalga
+
+    pip install django-cors-headers buyrug'ini beramiz
+    
+settings.py fayliga 
+
+    INSTALLED_APPS = [
+        ...,
+        "corsheaders",
+        ...,
+    ]
+    
+    MIDDLEWARE = [
+        ...,
+        "corsheaders.middleware.CorsMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        ...,
+    ]
+    
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+    ]
+    
