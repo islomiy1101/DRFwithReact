@@ -403,3 +403,33 @@ Input va Textareaga o'zgarish kiritish uchun quyidagicha o'zgarish qilamiz
       <textarea id="description" value={description} 
           className="form-control" rows="5" onChange={(e)=>setDescription(e.target.value)}
           placeholder="Enter a Description"></textarea>
+
+Endi Update Article tugmasini bosganda post update bo'lishi uchun tugmaga funksiya qo'shamiz
+
+      <button className="btn btn-success mt-2" onClick={()=>updateArticle(props.article.id)}>
+        Update Article
+      </button>
+      
+Yuqorida esa __updateArticle__ nomli funksiya yaratamiz.
+
+     const updateArticle=async(id)=>{
+        const config={
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization': `Token 63804db156c23f67a42c62e8a74ba204cf624239`,
+              }
+        }
+        const article=await axios.put(`http://127.0.0.1:8000/api/articles/${id}/`,{
+            title,description},config)
+            console.log(article);
+      }
+Form.js va App.js fayllarimizda ba'zi o'zgarishlarni amalga oshiramiz
+
+    {editArticle? <Form article={editArticle} setEditArticle={setEditArticle}/> : null}
+    
+Form.js
+    
+    const article=await axios.put(`http://127.0.0.1:8000/api/articles/${id}/`,{
+            title,description},config)
+    props.setEditArticle({title:'',description:''}) 
+    
